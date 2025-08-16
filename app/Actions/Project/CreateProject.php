@@ -26,9 +26,10 @@ final class CreateProject
             'budget_min_amount' => $input['budget_min_amount'],
             'budget_max_amount' => $input['budget_max_amount'],
             'application_closes_at' => data_get($input, 'application_closes_at'),
-            'status' => $input['publish_now']
+            'status' => (isset($input['publish_now']) && $input['publish_now'])
                 ? ProjectStatus::OPEN
                 : ProjectStatus::DRAFT,
+
         ]);
 
         ProjectCreated::dispatch($project);
@@ -42,9 +43,9 @@ final class CreateProject
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'budget_min_amount' => ['required', 'integer', 'min:1000'],
-            'budget_max_amount' => ['required', 'integer', 'max:9999999'],
+            'budget_max_amount' => ['required', 'integer', 'max:9999999', 'gt:budget_min_amount'],
             'application_closes_at' => ['nullable', 'date', 'after:today'],
-            'publish_now' => ['required', 'boolean'],
+            'publish_now' => ['nullable', 'boolean'],
         ])->validate();
     }
 }

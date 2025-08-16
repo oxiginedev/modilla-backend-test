@@ -8,6 +8,7 @@ use App\Actions\Project\CreateProject;
 use App\Actions\Project\DeleteProject;
 use App\Actions\Project\UpdateProject;
 use App\Enums\ProjectStatus;
+use App\Http\Requests\ListProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Http\Responses\ApiResponse;
 use App\Models\Project;
@@ -16,26 +17,30 @@ use Illuminate\Http\Request;
 
 final class ProjectController
 {
-    public function index(Request $request)
+    public function index(ListProjectRequest $request)
     {
         $pageSize = $request->integer('pageSize', 10);
         $page = $request->integer('page', 1);
-        $status = $request->string('status');
+        $status = $request->string('status')->toString();
         $budgetMinAmount = $request->integer('budgetMin');
         $budgetMaxAmount = $request->integer('budgetMax');
-        $q = $request->string('q');
+        $q = $request->string('q')->toString();
 
         $projects = Project::query()
             ->with('owner:id,name')
             // Exclude projects that are still in draft
             // Only return drafts if the owners are authenticated
-            ->whereIn('status', [ProjectStatus::OPEN, ProjectStatus::CLOSED])
+            ->whereNot('status', ProjectStatus::DRAFT)
             ->when($q, function (Builder $query) use ($q) {
-                $query->where('title', 'like', "%{$q}%")
-                    ->orWhere('description', 'like', "%{$q}%");
+                $query->where('title', 'LIKE', "%{$q}%")
+                    ->orWhere('description', 'LIKE', "%{$q}%");
             })
             ->when($status, function (Builder $query) use ($status) {
-                $query->where('status', $status);
+                $status = ProjectStatus::from($status);
+
+                if ($status !== ProjectStatus::DRAFT) {
+                    $query->where('status', $status);
+                }
             })
             ->when($budgetMinAmount, function (Builder $query) use ($budgetMinAmount) {
                 $query->where('budget_min_amount', '>=', $budgetMinAmount);

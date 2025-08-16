@@ -8,7 +8,10 @@ use App\Http\Controllers\FreelancerApplicationController;
 use App\Http\Controllers\ProjectApplicationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectStatusController;
+use App\Http\Responses\ApiResponse;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', fn () => new ApiResponse('Mondilla Backend Test'));
 
 Route::post('/auth/register', [RegisterController::class, 'store']);
 Route::post('/auth/login', [AuthenticatedUserController::class, 'store']);

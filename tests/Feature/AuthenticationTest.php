@@ -21,8 +21,11 @@ final class AuthenticationTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertJsonStructure([
-            'access_token',
-            'user',
+            'message',
+            'data' => [
+                'access_token',
+                'user',
+            ],
         ]);
     }
 
@@ -35,7 +38,7 @@ final class AuthenticationTest extends TestCase
             'password' => 'wrong-password',
         ]);
 
-        $response->assertStatus(422);
+        $response->assertUnprocessable();
     }
 
     public function test_authenticated_user_can_logout(): void

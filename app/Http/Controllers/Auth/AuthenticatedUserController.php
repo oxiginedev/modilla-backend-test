@@ -50,8 +50,7 @@ final class AuthenticatedUserController
             'Login successful', [
                 'access_token' => $accessToken,
                 'user' => new UserResource($user),
-            ],
-            201
+            ]
         );
     }
 

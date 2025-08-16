@@ -8,7 +8,7 @@ Follow these steps to run the project locally
 
 1. Clone the repository
 ```bash
-git clone git@github.com/oxiginedev/mondilla-backend-test
+git clone git@github.com:oxiginedev/modilla-backend-test.git
 
 cd mondilla-backend-test
 ```
@@ -21,6 +21,7 @@ composer install
 3. Copy Environment File
 ```bash
 cp .env.example .env
+```
 
 4. Generate application key
 ```bash
@@ -48,11 +49,38 @@ php artisan migrate --seed --force
 php artisan serve
 ```
 
-The application should now be available at [http://localhost:8000]
+The application should now be available at [http://localhost:8000](http://localhost:8000)
 
 ## Documentation
 
 Endpoints have been documented with Postman. Find the collection here
+
+## API Responses
+
+Success responses (without pagination) are returned like so:
+```json
+{
+    "message": "Be, and it is",
+    "data": {
+        ...
+    }
+}
+```
+
+Success responses(with pagination)
+```json
+{
+    "message": "Be, and it is",
+    "data": [],
+    "links": {},
+    "meta": {}
+}
+```
+
+## API Design & Database Schema Decisions
+
+- [x] I avoided the use of enums directly on the database. Instead i store statuses as strings, but are casted using defined PHP enum classes. This allows for extensibility in schema. Database enums are tightly coupled to be easily extended.
+- [x] The Projects list endpoint does not return `draft` projects, since it's a public facing endpoint, ideally only clients should be able to see their draft projects.
 
 ## Code Architecture
 
@@ -60,7 +88,7 @@ I used the `Actions Pattern` for organizing business logic. Asides from the simp
 
 ### Why Actions Pattern?
 
-Three major reasons stand out for me:
+Four major reasons stand out for me:
 - Single Responsibility - Each action handles exactly one task
 - Readability - Clear separation between controllers and business logic.
 - Reusability - The classes can be reused across controllers, commands, jobs, and event listeners.
@@ -68,7 +96,7 @@ Three major reasons stand out for me:
 
 ## Tests
 
-Both unit and integration tests have been implemented in the app. Run using the command below
+Both unit and integration tests have been implemented in the app. Run using the command below (All Tests Passing)
 ```bash
 composer test
 ```

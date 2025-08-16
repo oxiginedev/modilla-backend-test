@@ -1,5 +1,7 @@
 # Mondilla Backend Test (Track A - Laravel)
 
+[![Tests](https://github.com/oxiginedev/modilla-backend-test/actions/workflows/tests.yml/badge.svg)](https://github.com/oxiginedev/modilla-backend-test/actions/workflows/tests.yml) [![Code Style](https://github.com/oxiginedev/modilla-backend-test/actions/workflows/lint.yml/badge.svg)](https://github.com/oxiginedev/modilla-backend-test/actions/workflows/lint.yml)
+
 Here's my submission project for the Backend developer interview test at Modilla Designs
 
 ## Setup Guide

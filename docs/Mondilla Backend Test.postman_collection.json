@@ -1,0 +1,875 @@
+{
+	"info": {
+		"_postman_id": "4b8b0d1c-afc3-4267-9977-a00a933e3ff6",
+		"name": "Mondilla Backend Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43884242"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User (Client)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Adedaramola Adetimehin\",\r\n    \"email\": \"adedaramolaadetimehin@gmail.com\",\r\n    \"password\": \"password\",\r\n    \"role\": \"client\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/register",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User (Freelancer)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Adedaramola Enoch\",\r\n    \"email\": \"paranok@gmail.com\",\r\n    \"password\": \"password\",\r\n    \"role\": \"freelancer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/register",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"adedaramolaadetimehin@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/login",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"adedaramolaadetimehin@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/auth/login",
+									"protocol": "http",
+									"host": [
+										"mondilo-backend-test",
+										"test"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 17:28:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.17"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"3|mByHUGUrkOdwhq4IFBEQiIAKf9JlrkvXKcFjZMA070202e64\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Adedaramola Adetimehin\",\n        \"email\": \"adedaramolaadetimehin@gmail.com\",\n        \"email_verified_at\": null,\n        \"role\": \"client\",\n        \"created_at\": \"2025-08-15T12:48:21.000000Z\",\n        \"updated_at\": \"2025-08-15T12:48:21.000000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Create Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|JJHqLzyVjxIkpDCCTw6xTAoTSgWDjmxC6nYvwW9K4bc636b5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Angular JS Developer\",\r\n    \"description\": \"A sample description\",\r\n    \"budget_min_amount\": 100000,\r\n    \"budget_max_amount\": 500000,\r\n    \"publish_now\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/projects",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Projects",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/projects",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": null,
+									"description": "Number of records to retrieve per page",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": null,
+									"description": "The page to navigate to",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": null,
+									"description": "The status of the project. It can be DRAFT",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "React",
+									"description": "Search query",
+									"disabled": true
+								},
+								{
+									"key": "budgetMin",
+									"value": null,
+									"description": "Minimum project budget amount",
+									"disabled": true
+								},
+								{
+									"key": "budgetMax",
+									"value": null,
+									"description": "Maximum project budget amount",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Project",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/projects/4",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|SEeuJc2lrSXHuN5VUjBhA8n9NPxO0MaY7vtmT1B381498667",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"C# Developer\",\r\n    \"description\": \"A sample description\",\r\n    \"budget_min_amount\": 200000,\r\n    \"budget_max_amount\": 500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/projects/3",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|SEeuJc2lrSXHuN5VUjBhA8n9NPxO0MaY7vtmT1B381498667",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/projects/2",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Close Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|pF7RAM458I4d0VYP8t0165yiqlSwjN6bEFmhbJyb28f60465",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/projects/4/close",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects",
+								"4",
+								"close"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Open Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|pF7RAM458I4d0VYP8t0165yiqlSwjN6bEFmhbJyb28f60465",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/projects/4/open",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects",
+								"4",
+								"open"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/projects/4/open",
+									"protocol": "http",
+									"host": [
+										"mondilo-backend-test",
+										"test"
+									],
+									"path": [
+										"projects",
+										"4",
+										"open"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 19:24:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.17"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Project status updated\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Project Applications",
+			"item": [
+				{
+					"name": "Apply to Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|JJHqLzyVjxIkpDCCTw6xTAoTSgWDjmxC6nYvwW9K4bc636b5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bid_amount\": 350000,\r\n    \"cover_letter\": \"I can do this job, I no fit lie give una\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/projects/3/applications",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects",
+								"3",
+								"applications"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Duplicate Application",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"bid_amount\": 350000,\r\n    \"cover_letter\": \"I can do this job, I no fit lie give una\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/projects/3/applications",
+									"protocol": "http",
+									"host": [
+										"mondilo-backend-test",
+										"test"
+									],
+									"path": [
+										"projects",
+										"3",
+										"applications"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 17:26:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.17"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"You have previously applied to this project\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Project Applications",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|pF7RAM458I4d0VYP8t0165yiqlSwjN6bEFmhbJyb28f60465",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bid_amount\": 350000\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/projects/3/applications",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"projects",
+								"3",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Project Application",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/applications/1",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"applications",
+								"1"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": null,
+									"description": "Number of records to retrieve per page",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": null,
+									"description": "The page to navigate to",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": null,
+									"description": "The status of the project. It can be DRAFT",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "React",
+									"description": "Search query",
+									"disabled": true
+								},
+								{
+									"key": "budgetMin",
+									"value": null,
+									"description": "Minimum project budget amount",
+									"disabled": true
+								},
+								{
+									"key": "budgetMax",
+									"value": null,
+									"description": "Maximum project budget amount",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Project Application",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|pF7RAM458I4d0VYP8t0165yiqlSwjN6bEFmhbJyb28f60465",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/applications/1/accept",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"applications",
+								"1",
+								"accept"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Freelancers",
+			"item": [
+				{
+					"name": "List Project Applications",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|JJHqLzyVjxIkpDCCTw6xTAoTSgWDjmxC6nYvwW9K4bc636b5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/me/applications",
+							"protocol": "http",
+							"host": [
+								"mondilo-backend-test",
+								"test"
+							],
+							"path": [
+								"me",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

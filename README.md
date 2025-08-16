@@ -55,7 +55,7 @@ The application should now be available at [http://localhost:8000](http://localh
 
 ## Documentation
 
-Endpoints have been documented with Postman. Find the collection here
+Endpoints have been documented with Postman. Find the collection within the `docs` folder
 
 ## API Responses
 
@@ -63,16 +63,13 @@ Success responses (without pagination) are returned like so:
 ```json
 {
     "message": "Be, and it is",
-    "data": {
-        ...
-    }
+    "data": {}
 }
 ```
 
 Success responses(with pagination)
 ```json
 {
-    "message": "Be, and it is",
     "data": [],
     "links": {},
     "meta": {}

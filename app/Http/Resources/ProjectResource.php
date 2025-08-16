@@ -19,7 +19,7 @@ final class ProjectResource extends JsonResource
         return [
             ...parent::toArray($request),
             'is_accepting_applications' => $this->isAcceptingApplications(),
-            'days_since_created' => $this->created_at->diffInDays(),
+            'days_since_created' => $this->created_at->diffForHumans(),
         ];
     }
 }

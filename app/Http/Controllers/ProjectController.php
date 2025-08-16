@@ -32,6 +32,8 @@ final class ProjectController
             // Only return drafts if the owners are authenticated
             ->whereNot('status', ProjectStatus::DRAFT)
             ->when($q, function (Builder $query) use ($q) {
+                // ILIKE is used for case insensivity in Postgres
+                // But the test suite uses sqlite, which uses LIKE
                 $query->where('title', 'LIKE', "%{$q}%")
                     ->orWhere('description', 'LIKE', "%{$q}%");
             })

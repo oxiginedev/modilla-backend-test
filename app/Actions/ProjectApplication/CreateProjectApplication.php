@@ -18,7 +18,7 @@ final class CreateProjectApplication
         Gate::forUser($freelancer)->authorize('create', ProjectApplication::class);
 
         if (! $project->isAcceptingApplications()) {
-            abort(400, 'This project is no longer accepting applications');
+            abort(400, 'This project doesn\'t exist or is no longer accepting applications');
         }
 
         // This was initially part of the validate function
@@ -41,7 +41,7 @@ final class CreateProjectApplication
     private function validate(array $input)
     {
         Validator::make($input, [
-            'bid_amount' => ['nullable', 'integer'],
+            'bid_amount' => ['nullable', 'integer', 'min:0'],
             'cover_letter' => ['required', 'string'],
         ])->validate();
     }
